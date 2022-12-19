@@ -12,11 +12,12 @@ function insert(natal) {
 }
  
 const ObjectId = require("mongodb").ObjectId;
+
 function findOne(id) {
     return global.conn.collection("natal").findOne(new ObjectId(id));
 }
  
-function update(id, natal) {
+function updateOne(id, natal) {
     return global.conn.collection("natal").updateOne({ _id: new ObjectId(id) }, { $set: natal });
 }
 

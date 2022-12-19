@@ -44,18 +44,6 @@ router.get('/edit/:id', async (req, res, next) => {
   }
 })
 
-router.get('/delete/:id', async (req, res) => {
-  const id = req.params.id;
- 
-  try {
-    const result = await global.db.deleteOne(id);
-    console.log(result);
-    res.redirect('/');
-  } catch (err) {
-    next(err);
-  }
-})
-
 router.post('/edit/:id', async (req, res) => {
   const id = req.params.id;
   const nome = req.body.nome;
@@ -64,6 +52,18 @@ router.post('/edit/:id', async (req, res) => {
  
   try {
     const result = await global.db.updateOne(id, { nome, idade, uf });
+    console.log(result);
+    res.redirect('/');
+  } catch (err) {
+    next(err);
+  }
+})
+
+router.get('/delete/:id', async (req, res) => {
+  const id = req.params.id;
+ 
+  try {
+    const result = await global.db.deleteOne(id);
     console.log(result);
     res.redirect('/');
   } catch (err) {
