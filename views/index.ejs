@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table>
+      <% docs.forEach(function(natal){ %>
+        <tr>
+          <td> <%= natal.nome %> </td> <td> <%= natal.idade %> </td> <td> <%= natal.uf %> </td>
+          <td><a href="/edit/<%= natal._id %>"> [ Editar ]</a> </td>
+          <td><a href="/delete/<%= natal._id %>" onclick="return confirm('Excluir <%= natal.nome %> ?');"> [X] </a> </td>
+        </tr>
+      <% }) %>
+    </table>
+    <hr />
+    <a href="/new">Nova Pessoa</a>
+  </body>
+</html>
